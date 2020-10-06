@@ -65,7 +65,7 @@ with open(file_to_load) as election_data:
             # Calculate percentage
             vote_percentage = float(votes) / float(total_votes) * 100
             # Print results
-            candidate_results = (f"{candidate_name}: {vote_percentage:.1f}% ({votes})\n")
+            candidate_results = (f"{candidate_name}: {vote_percentage:.1f}% ({votes:,})\n")
             print(candidate_results)
             # Write to text file
             txt_file.write(candidate_results)
