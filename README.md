@@ -44,4 +44,53 @@ The output of the completed program is shown below:
 ![Results](results.png)
 
 ## Election-Audit Summary
+Because of the structure of this script, the election commission should be able to use it for any election, with any number of votes, candidates, and counties. The code snippet below does not included any hard-coded values in terms of candidate or county, and will go through the data and add each new value accordingly, until the last row of the data.  
 
+    for row in reader:
+
+        # Add to the total vote count
+        total_votes = total_votes + 1
+
+        # Get the candidate name from each row.
+        candidate_name = row[2]
+
+        # Extract the county name from each row.
+        county_name = row[1]
+
+        # If the candidate does not match any existing candidate add it to
+        # the candidate list
+        if candidate_name not in candidate_options:
+
+            # Add the candidate name to the candidate list.
+            candidate_options.append(candidate_name)
+
+            # And begin tracking that candidate's voter count.
+            candidate_votes[candidate_name] = 0
+
+        # Add a vote to that candidate's count
+        candidate_votes[candidate_name] += 1
+
+        if county_name not in counties:
+
+            # Add the existing county to the list of counties.
+            counties.append(county_name)
+
+            # Begin tracking the county's vote count.
+            county_votes[county_name] = 0
+            
+        # Add a vote to that county's vote count.
+        county_votes[county_name] += 1
+        
+An adjustment that the election commission may need to make is in the lines that assign candidate_name and county_name based on the index in the CSV file. If the file is formatted differently, the indexes must be adjusted accordingly. If the file is in the same format, no adjustments in this code are necessary. Additionally, adjustments may need to occur in the case of a tie in the election. The code below only accounts for elections with no ties, and in the case of a tie, the first encountered candidate or county would be assumed as the "winner". I would suggest the election commission make an addition to account for this possible outcome.
+
+    # Determining largest county turnout
+    if votes > largest_county_votes:
+            largest_county_votes = votes
+            largest_county = county_name
+            
+    # Determining winning candidate
+    if (votes > winning_count) and (vote_percentage > winning_percentage):
+            winning_count = votes
+            winning_candidate = candidate_name
+            winning_percentage = vote_percentage
+    
