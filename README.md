@@ -40,7 +40,7 @@ The continued analysis of the election shows that:
     - Denver, which accounted for 82.8% of the votes (306,055 total votes)
     
 The output of the completed program is shown below:
-
+![Results](results.png)
 
 ## Election-Audit Summary
 
