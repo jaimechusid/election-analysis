@@ -38,6 +38,9 @@ The continued analysis of the election shows that:
     - Arapahoe had 6.7% of the votes and 24,801 total votes.
 - The county with the largest voter turnout was:
     - Denver, which accounted for 82.8% of the votes (306,055 total votes)
+    
+The output of the completed program is shown below:
+
 
 ## Election-Audit Summary
 
